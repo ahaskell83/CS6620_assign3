@@ -15,4 +15,5 @@ resource "aws_dynamodb_table" "clowder" {
         name = "Clowder_Id"
         type = "S"
     }
+
 }

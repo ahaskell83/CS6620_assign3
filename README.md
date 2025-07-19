@@ -45,6 +45,14 @@ For each test, the database item and S3 object should match.
 
 - https://github.com/clinton-pillay7/localstack-tutorial/blob/master/localstack/wsgi.py
 
+- https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html
+
+- https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html
+
 - https://www.fernandomc.com/posts/ten-examples-of-getting-data-from-dynamodb-with-python-and-boto3/
 
-- Google AI Overview. Search terms: ["localstack dynamodb docker compose", "terraform dynamodb localstack", "run flask app localstack"]
+- https://stackoverflow.com/questions/61749489/getting-could-not-connect-to-the-endpoint-url-error-with-boto3-when-deploying
+
+- https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.UpdateExpressions.html
+
+- Google AI Overview. Search terms: ["localstack dynamodb docker compose", "terraform dynamodb localstack", "run flask app localstack", "update item dynamodb with python dictionary"]
