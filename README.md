@@ -65,6 +65,8 @@ For each test, the database item and S3 object should match.
 
 - https://www.geeksforgeeks.org/python/redirecting-to-url-in-flask/
 
-- https://gist.github.com/cecilemuller/437d7340b9f095cf5635dc9780a05092
+- https://github.com/hashicorp/setup-terraform
+
+
 
 - Google AI Overview. Search terms: ["localstack dynamodb docker compose", "terraform dynamodb localstack", "run flask app localstack", "update item dynamodb with python dictionary"]
