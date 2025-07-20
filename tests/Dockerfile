@@ -15,4 +15,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["./tests/run_assign_3.sh"]
+#CMD ["./tests/run_assign_3.sh"]
