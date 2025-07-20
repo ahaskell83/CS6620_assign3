@@ -6,10 +6,17 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+
+WORKDIR /CS6620_ASSIGN3
+
+COPY ./ /CS6620_ASSIGN3
+
 COPY *.sh .
 COPY *.py .
 COPY *.html .
 COPY . .
+COPY ./tests/ ./tests/
+COPY ./templates/ ./templates/
 
 EXPOSE 5000
 
