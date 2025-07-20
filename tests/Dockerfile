@@ -15,8 +15,8 @@ COPY *.sh .
 COPY *.py .
 COPY *.html .
 COPY . .
-COPY ./tests/ ./tests/
-COPY ./templates/ ./templates/
+COPY templates ./templates
+COPY tests ./tests
 
 EXPOSE 5000
 
