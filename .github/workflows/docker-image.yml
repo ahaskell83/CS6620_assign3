@@ -33,4 +33,4 @@ jobs:
       run: terraform apply --auto-approve
 
     - name: Test with Pytest
-      run: docker exec tests-app-1 pytest
+      run: docker exec tests-app-1 bash -c "pytest"
