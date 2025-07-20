@@ -26,6 +26,7 @@ first start localstack containger run_local_stock.sh
 - Sending a DELETE request results in the appropriate item being removed from the database and object being removed from the S3 bucket
 - Sending a DELETE request with no valid target returns the appropriate response
 
+
 For each test, the database item and S3 object should match.
 
 
@@ -54,5 +55,14 @@ For each test, the database item and S3 object should match.
 - https://stackoverflow.com/questions/61749489/getting-could-not-connect-to-the-endpoint-url-error-with-boto3-when-deploying
 
 - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.UpdateExpressions.html
+
+- https://flask.palletsprojects.com/en/stable/testing/#fixtures
+
+- https://towardsthecloud.com/blog/aws-sdk-key-exists-s3-bucket-boto3
+
+- https://towardsthecloud.com/blog/aws-sdk-write-data-amazon-s3-boto3
+
+- https://www.geeksforgeeks.org/python/redirecting-to-url-in-flask/
+
 
 - Google AI Overview. Search terms: ["localstack dynamodb docker compose", "terraform dynamodb localstack", "run flask app localstack", "update item dynamodb with python dictionary"]
