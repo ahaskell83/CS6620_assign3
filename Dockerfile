@@ -13,5 +13,5 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "assign_3.py"]
+#CMD ["python", "assign_3.py"]
 #["./run_assign_3.sh"]
