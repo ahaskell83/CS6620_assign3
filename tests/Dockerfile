@@ -1,0 +1,18 @@
+FROM python:3.12.2-slim
+
+RUN pip install --upgrade pip
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY *.sh .
+COPY *.py .
+COPY *.html .
+COPY . .
+
+EXPOSE 5000
+
+CMD ["python", "-m", "pytest"]
+#["sh", "-c", "python -m pytest"]
+#["./run_assign_3.sh"]
