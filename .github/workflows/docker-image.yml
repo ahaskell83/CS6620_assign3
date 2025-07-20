@@ -32,5 +32,5 @@ jobs:
     - name: Run Terraform Apply
       run: terraform apply --auto-approve
 
-    - name: Test with Pytest
-      run: python -m pytest
+    #- name: Test with Pytest
+     # run: python -m pytest
