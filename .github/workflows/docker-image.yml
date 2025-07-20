@@ -14,5 +14,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker compose -f "docker-compose.yml" up -d --build
+
+    - name: Initialize the Terraform Configuration
+      run: terraform init
+
+    - name: Run Terraform Plan
+      run: terraform plan
+
+    - name: Run Terraform Apply
+      run: terraform apply --auto-approve
+
+    - name: Test with Pytest
+      run: |
+        python -m pytest
