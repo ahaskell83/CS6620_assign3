@@ -1,13 +1,12 @@
 # CS6620_assign3
 # CI/CD pipeline (part 3) - Orchestration and CRUD
 
-### Add functionality to create, read, update, and destroy items in a DynamoDB table and an S3 bucket. 
-
-### Use Localstack to run a mock of AWS as part of your application stack. 
-
-first start localstack containger run_local_stock.sh
+### Add functionality to create, read, update, and destroy items in a DynamoDB table and an S3 bucket. Use Localstack to run a mock of AWS as part of your application stack. 
 
 ### Create two compose files and corresponding shell scripts: one will run the stack until manually stopped, 
+
+![Docker Compose File for Manual Tests](docker-compose.yml)
+![Shell Script to Run Localstack and Flask app](run_assign_3.sh)
 
 ### the other will run the tests and exit with a zero status if the tests pass and a non-zero status if the tests fail. 
 
@@ -36,6 +35,8 @@ For each test, the database item and S3 object should match.
 
 - https://medium.com/@pushpam.ankit/setting-up-localstack-and-dynamodb-tables-with-docker-and-terraform-44e2811d554d
 
+- https://medium.com/@clinton.bitcoin/localstack-terraform-part-2-b3f80e59250 
+
 - https://docs.localstack.cloud/aws/tutorials/s3-static-website-terraform/
 
 - https://docs.localstack.cloud/aws/integrations/infrastructure-as-code/terraform/
@@ -63,6 +64,5 @@ For each test, the database item and S3 object should match.
 - https://towardsthecloud.com/blog/aws-sdk-write-data-amazon-s3-boto3
 
 - https://www.geeksforgeeks.org/python/redirecting-to-url-in-flask/
-
 
 - Google AI Overview. Search terms: ["localstack dynamodb docker compose", "terraform dynamodb localstack", "run flask app localstack", "update item dynamodb with python dictionary"]
