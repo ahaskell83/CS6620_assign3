@@ -10,25 +10,95 @@
 
 ### the other will run the tests and exit with a zero status if the tests pass and a non-zero status if the tests fail. 
 
+*Need to finalize actual testing. Can't get to run inside container inside workflow- maybe App container closing too soon???*
+
+.github/workflows/docker-image.yml
+
+
+![Test Code](test_assign_3.py)
+
+
 ### Put all relevant files into a repository, and enable automatic and manual runs of the tests using a workflow. 
 
 ### Include a README along with instructions for running the stack and tests
 
-- Sending a GET request with appropriate parameters returns expected JSON from the database
-- Sending a GET request that finds no results returns the appropriate response
 - Sending a GET request with no parameters returns the appropriate response
-- Sending a GET request with incorrect parameters returns the appropriate response
+
+http://127.0.0.1:5000
+
+![GET with no Parameters: http://127.0.0.1:5000](image.png)
+
 - Sending a POST request results in the JSON body being stored as an item in the database, and an object in an S3 bucket
+
+![POST with Clowder ID = 1 and Name = test](image-5.png)
+
+Clicking submit will redirect to the page below.
+
+- Sending a GET request with appropriate parameters returns expected JSON from the database
+
+http://127.0.0.1:5000/1
+
+![GET response for Clowder already in database: http://127.0.0.1:5000/1](image-3.png)
+
+- Sending a GET request that finds no results returns the appropriate response:
+
+http://127.0.0.1:5000/0
+
+![GET request with clowder id not in database: http://127.0.0.1:5000/0](image-1.png)
+
+- Sending a GET request with incorrect parameters returns the appropriate response
+
+http://127.0.0.1:5000/a
+
+![GET response: http://127.0.0.1:5000/a](image-4.png)
+
 - Sending a duplicate POST request returns the appropriate response
+
+1 entered as Clowder ID and submit clicked
+
+![POST requeset with clowder ID already in database (1 entered as clowder ID and submitted)](image-2.png)
+
 - Sending a PUT request that targets an existing resource results in updates to the appropriate item in the database and object in the S3 bucket
+
+Entering the following code in the terminal: 
+
+curl -X PUT http://127.0.0.1:5000/update/1  -H "Content-Type: application/json" -d '{"Clowder_Name": "new_name", "cat_info":{"cat_name":"Baxter","gender":"male"}}'
+
+Results in the following terminal output:
+
+![PUT request response with JSON updates](image-6.png)
+
+and updates to http://127.0.0.1:5000/1
+
+![PUT request](image-7.png)
+
 - Sending a PUT request with no valid target returns the appropriate response
+
+Running the following curl (same as above but with 0 as clowder id): 
+
+curl -X PUT http://127.0.0.1:5000/update/0  -H "Content-Type: application/json" -d '{"Clowder_Name": "new_name",
+ "cat_info":{"cat_name":"Baxter","gender":"male"}}'
+
+Results in the following response:
+
+![alt text](image-8.png)
 - Sending a DELETE request results in the appropriate item being removed from the database and object being removed from the S3 bucket
+
+Running the following command:
+
+curl -i -H "Content-Type: application/json" -X DELETE http://127.0.0.1:5000/delete/1
+
+Results in the following terminal output:
+
+![alt text](image-9.png)
+
 - Sending a DELETE request with no valid target returns the appropriate response
 
+Running the same curl again results in the following terminal output:
+
+![alt text](image-10.png)
 
 For each test, the database item and S3 object should match.
-
-
 
 ### References:
 - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html
@@ -66,7 +136,6 @@ For each test, the database item and S3 object should match.
 - https://www.geeksforgeeks.org/python/redirecting-to-url-in-flask/
 
 - https://github.com/hashicorp/setup-terraform
-
 
 
 - Google AI Overview. Search terms: ["localstack dynamodb docker compose", "terraform dynamodb localstack", "run flask app localstack", "update item dynamodb with python dictionary"]
