@@ -26,11 +26,11 @@
 
 http://127.0.0.1:5000
 
-![GET with no Parameters: http://127.0.0.1:5000](image.png)
+![GET with no Parameters: http://127.0.0.1:5000](pics/image.png)
 
 - Sending a POST request results in the JSON body being stored as an item in the database, and an object in an S3 bucket
 
-![POST with Clowder ID = 1 and Name = test](image-5.png)
+![POST with Clowder ID = 1 and Name = test](pics/image-5.png)
 
 Clicking submit will redirect to the page below.
 
@@ -38,25 +38,25 @@ Clicking submit will redirect to the page below.
 
 http://127.0.0.1:5000/1
 
-![GET response for Clowder already in database: http://127.0.0.1:5000/1](image-3.png)
+![GET response for Clowder already in database: http://127.0.0.1:5000/1](pics/image-3.png)
 
 - Sending a GET request that finds no results returns the appropriate response:
 
 http://127.0.0.1:5000/0
 
-![GET request with clowder id not in database: http://127.0.0.1:5000/0](image-1.png)
+![GET request with clowder id not in database: http://127.0.0.1:5000/0](pics/image-1.png)
 
 - Sending a GET request with incorrect parameters returns the appropriate response
 
 http://127.0.0.1:5000/a
 
-![GET response: http://127.0.0.1:5000/a](image-4.png)
+![GET response: http://127.0.0.1:5000/a](pics/image-4.png)
 
 - Sending a duplicate POST request returns the appropriate response
 
 1 entered as Clowder ID and submit clicked
 
-![POST requeset with clowder ID already in database (1 entered as clowder ID and submitted)](image-2.png)
+![POST requeset with clowder ID already in database (1 entered as clowder ID and submitted)](pics/image-2.png)
 
 - Sending a PUT request that targets an existing resource results in updates to the appropriate item in the database and object in the S3 bucket
 
@@ -66,11 +66,11 @@ curl -X PUT http://127.0.0.1:5000/update/1  -H "Content-Type: application/json" 
 
 Results in the following terminal output:
 
-![PUT request response with JSON updates](image-6.png)
+![PUT request response with JSON updates](pics/image-6.png)
 
 and updates to http://127.0.0.1:5000/1
 
-![PUT request](image-7.png)
+![PUT request](pics/image-7.png)
 
 - Sending a PUT request with no valid target returns the appropriate response
 
@@ -81,7 +81,7 @@ curl -X PUT http://127.0.0.1:5000/update/0  -H "Content-Type: application/json" 
 
 Results in the following response:
 
-![alt text](image-8.png)
+![PUT no valid ID](pics/image-8.png)
 - Sending a DELETE request results in the appropriate item being removed from the database and object being removed from the S3 bucket
 
 Running the following command:
@@ -90,13 +90,13 @@ curl -i -H "Content-Type: application/json" -X DELETE http://127.0.0.1:5000/dele
 
 Results in the following terminal output:
 
-![alt text](image-9.png)
+![DELETE with data in database](pics/image-9.png)
 
 - Sending a DELETE request with no valid target returns the appropriate response
 
 Running the same curl again results in the following terminal output:
 
-![alt text](image-10.png)
+![DELETE with no valid ID](pics/image-10.png)
 
 For each test, the database item and S3 object should match.
 
