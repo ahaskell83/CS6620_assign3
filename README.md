@@ -5,8 +5,8 @@
 
 ### Create two compose files and corresponding shell scripts: one will run the stack until manually stopped, 
 
-![Docker Compose File for Manual Tests](docker-compose.yml)
-![Shell Script to Run Localstack and Flask app](run_assign_3.sh)
+[Docker Compose File for Manual Tests](docker-compose.yml)
+[Shell Script to Run Localstack and Flask app](run_assign_3.sh)
 
 ### the other will run the tests and exit with a zero status if the tests pass and a non-zero status if the tests fail. 
 
