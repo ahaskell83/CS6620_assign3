@@ -5,8 +5,9 @@
 
 ### Create two compose files and corresponding shell scripts: one will run the stack until manually stopped, 
 
-![Docker Compose File for Manual Tests](docker-compose.yml)
-![Shell Script to Run Localstack and Flask app](run_assign_3.sh)
+[Docker Compose File for Manual Tests](docker-compose.yml)
+
+[Shell Script to Run Localstack and Flask app](run_assign_3.sh)
 
 ### the other will run the tests and exit with a zero status if the tests pass and a non-zero status if the tests fail. 
 
@@ -15,7 +16,7 @@
 .github/workflows/docker-image.yml
 
 
-![Test Code](test_assign_3.py)
+[Test Code](test_assign_3.py)
 
 
 ### Put all relevant files into a repository, and enable automatic and manual runs of the tests using a workflow. 
