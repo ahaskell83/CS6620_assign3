@@ -31,15 +31,10 @@ def parse_update_expression_helper(json_dict):
     
     for key,value in json_dict.items():
         rename_key = ":" +str(key)
+
         update_expression += " " + str(key) + " = " + rename_key + ","
-        
-        dtype = type(value)
-        if isinstance(dtype, dict):
-            update_values[rename_key] = {"M": value}
-        elif isinstance(dtype, bool):
-            update_values[rename_key] = {"BOOL": value}
-        else: #store numbers as strings
-            update_values[rename_key] = {"S": value}
+      
+        update_values[rename_key] = value
 
     update_expression_no_comma = "SET " + update_expression[:-1]
     
@@ -61,6 +56,23 @@ def check_in_bucket(id):
         if e.response['Error']['Code'] == '404':
             return False
 
+def return_from_bucket_dict(id):
+    response = s3_client.get_object(
+    Bucket = bucket_name,
+    Key=id)
+    
+    json_data = json.loads(response['Body'].read().decode('utf-8'))
+    
+    return json_data
+
+def return_from_database_dict(id):
+    response = dynamo_client.get_item(
+        TableName = table_name,
+        Key={'Clowder_Id': {'S':id}})
+
+    return response['Item']
+
+
 # REST API
 @app.route('/<string:id>', methods=['GET'])
 def start(id):
@@ -75,8 +87,8 @@ def start(id):
     except:
         return jsonify (Error = "Please enter a numeric Clowder ID"), 400
 
-    response = table.get_item(
-    Key={'Clowder_Id': id})
+    response = dynamo_client.get_item(TableName = table_name,
+    Key={'Clowder_Id': {'S':id}})
     
    #Sending a GET request that finds no results returns the appropriate response
     if not 'Item' in response:
@@ -90,7 +102,7 @@ def start(id):
         Key=id)
     
         mod_date = response_bucket['LastModified']
-        return jsonify(Clowder_Information_DB = response['Item'],s3_Modified_Date=mod_date), 201
+        return jsonify(Clowder_Information_DB = response['Item'], s3_data = return_from_bucket_dict(id),s3_Modified_Date=mod_date), 201
 
 
 @app.route('/', methods=['GET','POST'])
@@ -110,11 +122,12 @@ def post():
         return jsonify (Error = "Clowder ID already exists. Please select a new id, or add /<Clowder_Id> to the above url to see clowder info."), 403
     
     date = str(datetime.now())    
-
+ 
     clowder = {'Clowder_Id':{'S':id},
                'Clowder_Name':{'S':name},
                'Entry_Date' :{'S':date}
                }
+               
 
     json_string_clowder = json.dumps(clowder,default=str)
     
@@ -159,15 +172,13 @@ def update_clowder_info(id):
                 )
             
             #no update in s3, overwrites
-            json_string_clowder = json.dumps(new_clowder_info,default=str)
+            json_string_clowder = json.dumps(return_from_database_dict(id),default=str)
 
             response_bucket = bucket.put_object(
                 Body=json_string_clowder,
                 Key=id)
-            
-            mod_date = response_bucket.last_modified
                 
-            return jsonify(New_Clowder_info = response['Attributes'], s3_Modified_Date=mod_date),202
+            return jsonify(New_Clowder_info = return_from_database_dict(id), s3_data = return_from_bucket_dict(id)),202
         
         else:
             return jsonify(Error='No updates provided'), 403

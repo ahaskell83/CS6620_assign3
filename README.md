@@ -30,7 +30,7 @@ http://127.0.0.1:5000
 
 - Sending a POST request results in the JSON body being stored as an item in the database, and an object in an S3 bucket
 
-![POST with Clowder ID = 1 and Name = test](pics/image-5.png)
+![POST with Clowder ID = 1 and Name = test](pics/image-5.png)![alt text](image.png)
 
 Clicking submit will redirect to the page below.
 
