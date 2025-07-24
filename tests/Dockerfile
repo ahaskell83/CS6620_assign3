@@ -15,4 +15,5 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["./run_tests_assign_3.sh"]
+CMD ["tests/run_tests_assign_3.sh"]
+#["pytest", "tests/"]

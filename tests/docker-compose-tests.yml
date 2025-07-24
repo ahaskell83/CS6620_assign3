@@ -1,6 +1,6 @@
 services:
   localstack:
-    container_name: "${LOCALSTACK_DOCKER_NAME:-localstack-main}"
+    container_name: "${LOCALSTACK_DOCKER_NAME:-localstack-main-2}"
     image: localstack/localstack:latest
     read_only: false
     ports:
