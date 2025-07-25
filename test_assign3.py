@@ -1,6 +1,6 @@
 import pytest
 import requests
-from assign_3 import app as app_3
+from assign_3_test_endpoint import app as app_3
 
 
 @pytest.fixture()

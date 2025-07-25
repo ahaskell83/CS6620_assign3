@@ -15,6 +15,7 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["sleep","infinity"]
+CMD ["python", "test_assign3.py"]
+#CMD ["sleep","infinity"]
 #["pytest","-s","-vv","test_assign3.py"]
 #["pytest","-vv","test_assign3.py"]
