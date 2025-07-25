@@ -109,7 +109,7 @@ def start(id):
 def post():
     #Sending a GET request with no parameters returns the appropriate response
     if request.method == 'GET':
-        return render_template('post.html')
+        return render_template('post.html') , 200
 
     name = request.form.get('name')
     id = request.form.get('id')
@@ -145,7 +145,7 @@ def post():
     
     new_page = "/"+id
     
-    return redirect(new_page)
+    return redirect(new_page), 201
 
 
 #curl -X PUT http://127.0.0.1:5000/update/1  -H "Content-Type: application/json" -d '{"Clowder_Name": "new_name", "cat_info":{"cat_name":"Baxter","gender":"male"}}'

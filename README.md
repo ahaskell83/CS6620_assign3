@@ -21,7 +21,9 @@ To set up container and terraform use the command line an run ./run_local_stack.
 
 [Test Code](test_assign_3.py)
 
-To manually run tests use the command line and run ./run_tests_assign_3.sh
+To manually run tests use the command line and run: ./run_tests_assign_3.sh
+
+After container and terraform are running, enter: docker logs cs6620_assign3-app-1 in the command line to view that tests have completed.
 
 
 ### Put all relevant files into a repository, and enable automatic and manual runs of the tests using a workflow. 

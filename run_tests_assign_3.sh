@@ -7,3 +7,5 @@ terraform init
 terraform plan
 
 terraform apply --auto-approve
+
+pytest -vv test_assign3.py
