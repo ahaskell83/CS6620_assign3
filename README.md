@@ -106,7 +106,6 @@ Running the same curl again results in the following terminal output:
 
 ![DELETE with no valid ID](pics/image-10.png)
 
-For each test, the database item and S3 object should match.
 
 ### References:
 - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html
@@ -145,5 +144,8 @@ For each test, the database item and S3 object should match.
 
 - https://github.com/hashicorp/setup-terraform
 
+- https://docs.python.org/3/library/inspect.html
+
+- https://share.google/qZbd1E3m1va9HJ0wf
 
 - Google AI Overview. Search terms: ["localstack dynamodb docker compose", "terraform dynamodb localstack", "run flask app localstack", "update item dynamodb with python dictionary"]

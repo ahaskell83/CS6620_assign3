@@ -3,17 +3,25 @@ import boto3
 import botocore
 from datetime import datetime
 import json
+import inspect
 
 app = Flask(__name__)
 
+def endpoint_id():
+    file = inspect.stack()[-1].filename
+    if 'test' in file:
+        return  "http://localhost:4566"
+    else:
+        return "http://host.docker.internal:4566"
+    
 #for docker container runs
-ENDPOINT_URL = "http://host.docker.internal:4566"
-#ENDPOINT_URL = "http://localhost:4566" if run outside of container
+ENDPOINT_URL = endpoint_id()
 
 #from variables.tf
 bucket_name = "assign-3-bucket-adh"
 #from main.tf
 table_name = 'clowder'
+
 
 #from provider.tf
 s3_client = boto3.client('s3', region_name="us-east-1", endpoint_url = ENDPOINT_URL,aws_access_key_id="test",aws_secret_access_key="test")

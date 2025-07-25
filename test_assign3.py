@@ -1,7 +1,5 @@
 import pytest
-import requests
-from assign_3_test_endpoint import app as app_3
-
+from assign_3 import app as app_3
 
 @pytest.fixture()
 def app():
@@ -31,28 +29,36 @@ def test_wrong_id_get(client):
     response = client.get('/a')
     assert response.status_code == 400
     
-
-# POST
 def test_post_new_clowder(client):
-#curl -X POST -F "name=test2" -F "id=2" http://127.0.0.1:5000/
     test_data = {"name": "test", "id": "1"}
     response = client.post('/',data=test_data ,content_type='multipart/form-data')
  
     assert response.status_code == 201
     # test data in bucket and db match is below
 
-
-'''def test_id_valid_get(client):
+def test_id_valid_get(client):
     response = client.get('/1')
-    data = response.json()
-    print (data)
-    #assert data['Clowder_Information_DB'] == data['s3_data']
+    response_dict = response.json
+    assert response.status_code == 201
+    assert response_dict['Clowder_Information_DB'] == response_dict['s3_data']
 
-'''
-# PUT with correct params
+def test_valid_put(client):
+    response = client.put('update/1',json ={"Clowder_Name": "new_name", "cat_info":{"cat_name":"Baxter","gender":"male"}})
+    response_dict = response.json
+    assert response.status_code == 202
+    assert response_dict['New_Clowder_info'] == response_dict['s3_data']
+    
+def test_bad_id_put(client):
+    response = client.put('update/0',json ={"Clowder_Name": "new_name", "cat_info":{"cat_name":"Baxter","gender":"male"}})
+    assert response.status_code == 404
 
-# PUT with incorrect params
-
-# DELETE with correct params
-
-# DELETE with incorrect params
+def test_valid_delete(client):
+    response = client.delete('delete/1')
+    response_dict = response.json
+    assert response.status_code == 202
+    assert response_dict['Deleted_Clowder_Info_DB']['Clowder_Id'] == response_dict['Deleted_Clowder_Info_s3'][0]['Key']
+    
+def test_bad_id_delete(client):
+    response = client.delete('delete/1')
+    response_dict = response.json
+    assert response.status_code == 404
