@@ -7,7 +7,8 @@ import json
 app = Flask(__name__)
 
 #for docker container runs
-ENDPOINT_URL = "http://host.docker.internal:4566"
+#ENDPOINT_URL = "http://host.docker.internal:4566"
+ENDPOINT_URL = "http://localhost:4566"
 #from variables.tf
 bucket_name = "assign-3-bucket-adh"
 #from main.tf
