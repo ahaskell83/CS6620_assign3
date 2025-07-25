@@ -3,27 +3,29 @@
 
 ### Add functionality to create, read, update, and destroy items in a DynamoDB table and an S3 bucket. Use Localstack to run a mock of AWS as part of your application stack. 
 
-### Create two compose files and corresponding shell scripts: one will run the stack until manually stopped, 
+### Create two compose files and corresponding shell scripts:
 
 [Docker Compose File for Manual Tests](docker-compose.yml)
 
-[Shell Script to Run Localstack and Flask app](run_assign_3.sh)
+[Shell Script to Run Localstack and Flask app](run_local_stack.sh)
+
+[Docker Compose File for Manual Tests](docker-compose-tests.yml)
+
+[Shell Script to Run Localstack and Flask app](run_tests_assign_3.sh)
+
+### one will run the stack until manually stopped, 
 
 To set up container and terraform use the command line an run ./run_local_stack.sh
 
 ### the other will run the tests and exit with a zero status if the tests pass and a non-zero status if the tests fail. 
-
-.github/workflows/docker-image.yml
-
-[Test Code Script](run_tests_assign_3.sh)
-
-[Test Code](test_assign_3.py)
 
 To manually run tests use the command line and run: ./run_tests_assign_3.sh
 
 *note: you will need to manually destroy terraform between runs for back to back testing runs*
 
 ### Put all relevant files into a repository, and enable automatic and manual runs of the tests using a workflow. 
+
+.github/workflows/docker-image.yml
 
 ### Include a README along with instructions for running the stack and tests
 
