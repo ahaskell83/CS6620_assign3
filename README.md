@@ -9,14 +9,19 @@
 
 [Shell Script to Run Localstack and Flask app](run_assign_3.sh)
 
+To set up container and terraform use the command line an run ./run_local_stack.sh
+
 ### the other will run the tests and exit with a zero status if the tests pass and a non-zero status if the tests fail. 
 
 *Need to finalize actual testing. Can't get to run inside container inside workflow- maybe App container closing too soon???*
 
 .github/workflows/docker-image.yml
 
+[Test Code Script](run_tests_assign_3.sh)
 
 [Test Code](test_assign_3.py)
+
+To manually run tests use the command line and run ./run_tests_assign_3.sh
 
 
 ### Put all relevant files into a repository, and enable automatic and manual runs of the tests using a workflow. 

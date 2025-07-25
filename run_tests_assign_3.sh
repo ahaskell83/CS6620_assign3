@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker compose -f docker-compose.yml up -d --build
+docker compose -f docker-compose-tests.yml up -d --build
 
 terraform init
 

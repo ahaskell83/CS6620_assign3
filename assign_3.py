@@ -163,7 +163,7 @@ def update_clowder_info(id):
             new_clowder_info['Entry_Date'] = str(datetime.now()) #no datetime dtype in dynamodb 
             
             ue,eav = parse_update_expression_helper(new_clowder_info)
-            #return jsonify(Expression=ue)
+     
             response = table.update_item(
                 Key={'Clowder_Id': id},
                 UpdateExpression = ue,
@@ -203,7 +203,7 @@ def return_delete_clowder(id):
     response_bucket = bucket.delete_objects(
         Delete={
             'Objects': [{'Key': id}]
-            }
+                }
             )
     
     return jsonify(Deleted_Clowder_Info_DB = response['Attributes'], Deleted_Clowder_Info_s3 = response_bucket['Deleted']  ),202

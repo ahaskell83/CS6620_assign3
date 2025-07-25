@@ -1,23 +1,29 @@
-name: Docker Image CI
+name: CI/CD Pipeline
 
 on:
+  workflow_dispatch:
+    #future- add option to only test certain code
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+
+
 
 jobs:
 
   build:
 
+    name: Test Code
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Python 3.13.2
       uses: actions/setup-python@v3
       with:
         python-version: "3.13.2"
+
 
     - name: Install dependencies
       run: |
@@ -32,25 +38,6 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Build LocalStack
-      uses: LocalStack/setup-localstack@v0.2.2
-      with:
-        image-tag: 'latest'
-        install-awslocal: 'true'
-        configuration: DEBUG=1
-
-#unbuntu does not come with Terraform
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
-
-    - name: Terraform Init
-      run: terraform init
-
-    - name: Terraform Plan
-      run: terraform plan
-
-    - name: Terraform Apply
-      run: terraform apply --auto-approve
-
     - name: Test with Pytest
-      run: python assign_3.py
+      run: |
+        python -m pytest

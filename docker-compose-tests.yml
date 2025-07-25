@@ -14,8 +14,8 @@ services:
 
   app:
     build:
-      context: ../
-      dockerfile: ./tests/Dockerfile
+      #context: ./
+      dockerfile: Dockerfile.test
     ports:
       - "5000:5000"
     depends_on:
