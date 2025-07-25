@@ -53,4 +53,4 @@ jobs:
       run: terraform apply --auto-approve
 
     - name: Test with Pytest
-      run: python assign_3.py
+      run: python test_assign_3.py
