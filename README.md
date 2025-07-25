@@ -5,13 +5,13 @@
 
 ### Create two compose files and corresponding shell scripts:
 
-[Docker Compose File for Manual Tests](docker-compose.yml)
+[Docker Compose File for Manual Run](docker-compose.yml)
 
 [Shell Script to Run Localstack and Flask app](run_local_stack.sh)
 
-[Docker Compose File for Manual Tests](docker-compose-tests.yml)
+[Docker Compose File for Manual Testing with Pytest](docker-compose-tests.yml)
 
-[Shell Script to Run Localstack and Flask app](run_tests_assign_3.sh)
+[Shell Script to Run Manual Tests with Pytests](run_tests_assign_3.sh)
 
 ### one will run the stack until manually stopped, 
 
@@ -39,7 +39,7 @@ http://127.0.0.1:5000
 
 ![POST with Clowder ID = 1 and Name = test](pics/image-5.png)![alt text](image.png)
 
-Clicking submit will redirect to the page below.
+Entering data and clicking submit will redirect to the page below (depending on your the ID entered).
 
 - Sending a GET request with appropriate parameters returns expected JSON from the database
 
@@ -89,6 +89,7 @@ curl -X PUT http://127.0.0.1:5000/update/0  -H "Content-Type: application/json" 
 Results in the following response:
 
 ![PUT no valid ID](pics/image-8.png)
+
 - Sending a DELETE request results in the appropriate item being removed from the database and object being removed from the S3 bucket
 
 Running the following command:
