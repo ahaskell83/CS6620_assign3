@@ -52,6 +52,5 @@ jobs:
     - name: Terraform Apply
       run: terraform apply --auto-approve
 
-    - uses: actions/checkout@v4
     - name: Test with Pytest
-      run: pytest test_assign_3.py
+      run: pytest test_assign3.py
