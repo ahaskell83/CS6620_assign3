@@ -15,4 +15,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "test_assign3.py"]
+CMD ["pytest", "test_assign3.py"]
